@@ -20,18 +20,17 @@ class DropDown(GObject.Object):
         return self._name
 
 class ExampleWindow(Gtk.ApplicationWindow):
-    elementos = [ ]
-
+    
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-
+        #parametros base
         self.set_title(title='Guia4')
         self.set_default_size(width=int(1366 / 2), height=int(768 / 2))
         self.set_size_request(width=int(1366 / 2), height=int(768 / 2))
-
+        #crear headerbar
         header_bar = Gtk.HeaderBar.new()
         self.set_titlebar(titlebar=header_bar)
-
+        #crear menu
         menu_button_model = Gio.Menu()
         menu_button_model.append('About', 'app.about')
 
@@ -39,7 +38,7 @@ class ExampleWindow(Gtk.ApplicationWindow):
         menu_button.set_icon_name(icon_name='open-menu-symbolic')
         menu_button.set_menu_model(menu_model=menu_button_model)
         header_bar.pack_end(child=menu_button)
-
+        #contenedor base
         self.vbox1 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         self.vbox1.set_homogeneous(homogeneous=True)
         self.set_child(child=self.vbox1)
